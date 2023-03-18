@@ -1,0 +1,61 @@
+apiVersion: v1 
+kind: Template
+labels: 
+  build-template: dck_image-template 
+message: "Build template for Eazytraining dck_image-template"
+metadata: 
+  annotations: 
+    description: "Build template for Eazytraining dck_image-template"
+  name: dck_image-template 
+objects: 
+  - apiVersion: v1 
+    kind: BuildConfig 
+    metadata: 
+      labels: 
+        name: dck-${IMAGE_NAME}-${IMAGE_TAG}
+      name: dck-${IMAGE_NAME}-${IMAGE_TAG}
+    spec: 
+      completionDeadlineSecond: 1800
+      failedBuildsHistoryLimit: 3
+      successfulBuildsHistoryLimit: 2
+      output:
+        to:
+          kind: ImageStreamTag
+          name: dck_${IMAGE_NAME}:${IMAGE_TAG}
+        imageLabels:
+          - name: "eazytraining.lab.project.image.name"
+            value: "${IMAGE_NAME}"
+          - name: "eazytraining.lab.project.image.version"
+            value: "${IMAGE_TAG}"
+      source: 
+        git:
+          ref: "${GIT_BRANCH}"
+          uri: ${GIT_URL}
+        type: Git
+        contextDir: "docker"
+      strategy:
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+          forcePull: true
+          noCache: true
+          from:
+            kind: ImageStreamTag
+            name: ${FROM_IMAGE}
+            namespace: ${FROM_NAMESPACE}
+        type: Docker
+      triggers:
+        - imageChange:
+          type: ImageChange
+parameters:
+  - name: IMAGE_NAME
+    required: true
+  - name: GIT_BRANCH
+    required: true
+  - name: IMAGE_TAG
+    required: true
+  - name: GIT_URL
+    required: true
+  - name: FROM_NAMESPACE
+    required: true
+  - name: FROM_IMAGE
+    required: true
