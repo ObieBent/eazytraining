@@ -7,4 +7,4 @@ parameters:
   GIT_BRANCH: "main"
   VERSION: "1.0"
   APPLICATION_NAME: "eazytraining-httpd"
-  EXTERNAL_HOST: "eazytraining-httpd.apps.caas.eazytraining.lab 
+  EXTERNAL_HOST: "eazytraining-httpd.apps.caas.eazytraining.lab" 

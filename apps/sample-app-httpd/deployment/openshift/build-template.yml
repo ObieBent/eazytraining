@@ -1,4 +1,4 @@
-apiVersion: v1 
+apiVersion: template.openshift.io/v1
 kind: Template
 labels: 
   build-template: dck_image-template 
@@ -46,16 +46,28 @@ objects:
       triggers:
         - imageChange:
           type: ImageChange
-parameters:
+parameters:       
   - name: IMAGE_NAME
+    description: Name of the image
+    value: "eazytraining-lab-http" 
     required: true
   - name: GIT_BRANCH
+    description: Source Repository branch 
+    value: "main" 
     required: true
   - name: IMAGE_TAG
+    description: Image Tag
+    value: "1.0"
     required: true
   - name: GIT_URL
+    description: Source Repository URL
+    value: "https://github.com/ObieBent/eazytraining/apps/sample-app-httpd.git" 
     required: true
   - name: FROM_NAMESPACE
+    description: Source namespace
+    value: "openshift"
     required: true
   - name: FROM_IMAGE
+    description: Source image 
+    value: "httpd:2.4-el7" 
     required: true
