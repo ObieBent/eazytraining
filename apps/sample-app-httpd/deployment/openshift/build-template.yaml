@@ -22,17 +22,17 @@ objects:
         to:
           kind: ImageStreamTag
           name: dck_${IMAGE_NAME}:${IMAGE_TAG}
-        imageLabels:
-          - name: "eazytraining.lab.project.image.name"
-            value: "${IMAGE_NAME}"
-          - name: "eazytraining.lab.project.image.version"
-            value: "${IMAGE_TAG}"
+        # imageLabels:
+        #   - name: "eazytraining.lab.project.image.name"
+        #     value: "${IMAGE_NAME}"
+        #   - name: "eazytraining.lab.project.image.version"
+        #     value: "${IMAGE_TAG}"
       source: 
         git:
           ref: "${GIT_BRANCH}"
           uri: ${GIT_URL}
         type: Git
-        contextDir: "docker"
+        contextDir: "apps/sample-app-httpd/docker"
       strategy:
         dockerStrategy:
           dockerfilePath: Dockerfile
@@ -61,7 +61,7 @@ parameters:
     required: true
   - name: GIT_URL
     description: Source Repository URL
-    value: "https://github.com/ObieBent/eazytraining/apps/sample-app-httpd.git" 
+    value: "https://github.com/ObieBent/eazytraining.git" 
     required: true
   - name: FROM_NAMESPACE
     description: Source namespace
