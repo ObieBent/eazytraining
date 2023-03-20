@@ -48,12 +48,7 @@ objects:
                     topologyKey: site
                   weight: 100
           containers:
-            - volumeMounts:
-              - mountPath: /run/httpd/
-                name: pid-dir
-              - mountPath: /etc/httpd/logs/
-                name: log-dir
-              name: ${APPLICATION_NAME}
+            - name: ${APPLICATION_NAME}
               livenessProbe:
                 exec:
                   command:
@@ -88,11 +83,6 @@ objects:
           restartPolicy: Always
           schedulerName: default-scheduler
           terminationGracePeriodSeconds: 30
-          volumes:
-            - emptyDir: {}
-              name: pid-dir
-            - emptyDir: {}
-              name: log-dir
       test: false
       triggers:
         - type: ConfigChange
