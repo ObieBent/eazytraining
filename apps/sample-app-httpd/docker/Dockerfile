@@ -1,5 +1,5 @@
 FROM bitnami/apache:latest
 
-COPY ./src/ /var/www/html
+COPY ./src/ /var/www
 
 USER 1001
