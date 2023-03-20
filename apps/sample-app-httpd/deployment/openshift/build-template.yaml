@@ -33,10 +33,10 @@ objects:
           dockerfilePath: Dockerfile
           forcePull: true
           noCache: true
-          # from:
-          #   kind: ImageStreamTag
-          #   name: ${FROM_IMAGE}
-          #   namespace: ${FROM_NAMESPACE}
+          from:
+            kind: ImageStreamTag
+            name: ${FROM_IMAGE}
+            namespace: ${FROM_NAMESPACE}
         type: Docker
       triggers:
         - imageChange:
@@ -58,11 +58,11 @@ parameters:
     description: Source Repository URL
     value: "https://github.com/ObieBent/eazytraining.git" 
     required: true
-  # - name: FROM_NAMESPACE
-  #   description: Source namespace
-  #   value: "openshift"
-  #   required: true
-  # - name: FROM_IMAGE
-  #   description: Source image 
-  #   value: "httpd:2.4-el7" 
-  #   required: true
+  - name: FROM_NAMESPACE
+    description: Source namespace
+    value: "openshift"
+    required: true
+  - name: FROM_IMAGE
+    description: Source image 
+    value: "nginx:latest" 
+    required: true
