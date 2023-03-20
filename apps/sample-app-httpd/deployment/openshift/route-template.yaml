@@ -6,27 +6,22 @@ message: "Simple Route template for Eazytraining simple-route-template"
 metadata:
   annotations:
     description: "Simple Deploy template for Eazytraining simple-route-template"
-  name: devops_openshift-simple-route-template
+  name: eazytraining_openshift-simple-route-template
 objects:
   - apiVersion: v1
     kind: Route
     metadata:
       labels:
-        app: app-${APPLICATION_NAME}-${VERSION}
-      name: app-${APPLICATION_NAME}-${VERSION}
+        app: app-${APPLICATION_NAME}
+      name: route-${APPLICATION_NAME}
     spec:
-      host: ${EXTERNAL_HOST}
       port:
         targetPort: 8080
       to:
         kind: Service
-        name: app-${APPLICATION_NAME}-${VERSION}
+        name: svc-${APPLICATION_NAME}
         weight: 100
-      wildcardPolicy: None
 parameters:
-  - name: EXTERNAL_HOST
-    required: true
   - name: APPLICATION_NAME
+    value: eazytraining-httpd
     required: true
-  - name: VERSION
-    required: true 
