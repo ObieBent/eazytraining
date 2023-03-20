@@ -64,5 +64,5 @@ parameters:
     required: true
   - name: FROM_IMAGE
     description: Source image 
-    value: "nginx:latest" 
+    value: "httpd:2.4-el7" 
     required: true
