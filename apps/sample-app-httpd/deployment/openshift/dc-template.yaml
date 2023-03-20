@@ -79,10 +79,20 @@ objects:
               image: ${FROM_IMAGE}
               securityContext:
                 readOnlyRootFilesystem: true
+              volumeMounts:
+              - mountPath: /run/httpd/
+                name: pid-dir
+              - mountPath: /var/log/httpd24/
+                name: log-dir
           dnsPolicy: ClusterFirst
           restartPolicy: Always
           schedulerName: default-scheduler
           terminationGracePeriodSeconds: 30
+          volumes:
+            - emptyDir: {}
+              name: pid-dir
+            - emptyDir: {}
+              name: log-dir
       test: false
       triggers:
         - type: ConfigChange
