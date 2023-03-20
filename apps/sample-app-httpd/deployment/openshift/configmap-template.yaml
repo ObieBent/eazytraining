@@ -14,8 +14,8 @@ objects:
     kind: ConfigMap
     metadata:
       labels:
-        app: website-${APPLICATION_NAME}-${VERSION}
-      name: website-${APPLICATION_NAME}-${VERSION}
+        app: app-${APPLICATION_NAME}-${VERSION}
+      name: cm-${APPLICATION_NAME}-${VERSION}
 parameters:
   - name: APPLICATION_NAME
     required: true

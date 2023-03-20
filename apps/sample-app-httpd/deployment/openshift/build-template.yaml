@@ -12,7 +12,7 @@ objects:
     kind: BuildConfig 
     metadata: 
       labels: 
-        name: dck-${IMAGE_NAME}-${IMAGE_TAG}
+        app: dck-${IMAGE_NAME}-${IMAGE_TAG}
       name: dck-${IMAGE_NAME}-${IMAGE_TAG}
     spec: 
       completionDeadlineSecond: 1800
@@ -22,11 +22,6 @@ objects:
         to:
           kind: ImageStreamTag
           name: dck_${IMAGE_NAME}:${IMAGE_TAG}
-        # imageLabels:
-        #   - name: "eazytraining.lab.project.image.name"
-        #     value: "${IMAGE_NAME}"
-        #   - name: "eazytraining.lab.project.image.version"
-        #     value: "${IMAGE_TAG}"
       source: 
         git:
           ref: "${GIT_BRANCH}"
@@ -71,3 +66,7 @@ parameters:
     description: Source image 
     value: "httpd:2.4-el7" 
     required: true
+  - name: LABEL_COMPONENT
+    value: lab 
+  - name: LABEL_INSTANCE 
+    value: eazytraining

@@ -1,0 +1,21 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+labels: 
+  imagestream-template: image-stream-template 
+message: "Image Stream template for Eazytraining"
+metadata: 
+  annotations: 
+    description: "Image Stream  for Eazytraining"
+  name: dck_image-stream-template 
+objects: 
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    labels:
+      app: ${IMAGE_STREAM_NAME}
+    name: ${IMAGE_STREAM_NAME}
+parameters:       
+  - name: IMAGE_STREAM_NAME
+    description: Name of the image stream
+    value: "dck_eazytraining-lab-http" 
+    required: true

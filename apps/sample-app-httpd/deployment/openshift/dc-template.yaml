@@ -12,13 +12,13 @@ objects:
     kind: DeploymentConfig
     metadata:
       labels:
-        app: app-${APPLICATION_NAME}-${VERSION}
-      name: app-${APPLICATION_NAME}-${VERSION}
+        app: app-${APPLICATION_NAME}
+      name: dc-${APPLICATION_NAME}
     spec:
       revisionHistoryLimit: 5
       replicas: 2
       selector:
-        app: app-${APPLICATION_NAME}-${VERSION}
+        app: app-${APPLICATION_NAME}
       strategy:
         activeDeadlineSeconds: 21600
         resources: {}
@@ -32,8 +32,8 @@ objects:
       template:
         metadata:
           labels:
-            app: app-${APPLICATION_NAME}-${VERSION}
-            deploymentconfig: app-${APPLICATION_NAME}-${VERSION}
+            app: app-${APPLICATION_NAME}
+            deploymentconfig: dc-${APPLICATION_NAME}
         spec:
           affinity:
             podAntiAffinity:
@@ -44,7 +44,7 @@ objects:
                         - key: app
                           operator: In
                           values:
-                            - app-${APPLICATION_NAME}-${VERSION}
+                            - app-${APPLICATION_NAME}
                     topologyKey: site
                   weight: 100
           containers:
@@ -53,7 +53,7 @@ objects:
                 name: pid-dir
               - mountPath: /etc/httpd/logs/
                 name: log-dir
-              name: app-${APPLICATION_NAME}-${VERSION}
+              name: ${APPLICATION_NAME}
               livenessProbe:
                 exec:
                   command:
@@ -99,7 +99,7 @@ objects:
         - imageChangeParams:
             automatic: true
             containerNames:
-              - app-${APPLICATION_NAME}-${VERSION}
+              - ${APPLICATION_NAME}
             from:
               kind: ImageStreamTag
               name: ${FROM_IMAGE}
@@ -107,10 +107,12 @@ objects:
           type: ImageChange
 parameters:
   - name: FROM_NAMESPACE
+    value: "eazytraining"
     required: true
   - name: FROM_IMAGE
+    description: Source image 
+    value: "dck_eazytraining-lab-http:1.0" 
     required: true
   - name: APPLICATION_NAME
-    required: true
-  - name: VERSION
+    value: "eazytraining-httpd"
     required: true
