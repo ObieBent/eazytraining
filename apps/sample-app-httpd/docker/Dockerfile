@@ -1,5 +1,9 @@
-FROM nginx-120:latest
+FROM centos7:latest 
 
-COPY ./src/ /opt/app-root
+RUN yum install -y httpd && sed -i 's/^Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
+
+COPY ./src/ /var/www/html
 
 USER 1001
+
+CMD httpd -DFOREGROUND
