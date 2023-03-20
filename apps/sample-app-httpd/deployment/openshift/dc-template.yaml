@@ -49,6 +49,11 @@ objects:
                   weight: 100
           containers:
             - name: ${APPLICATION_NAME}
+              ports: 
+                - containerPort: 8080
+                  protocol: TCP
+                - containerPort: 8443
+                  protocol: TCP
               livenessProbe:
                 exec:
                   command:

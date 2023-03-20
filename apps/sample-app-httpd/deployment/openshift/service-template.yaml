@@ -7,22 +7,27 @@ metadata:
   annotations:
     description: "Simple Deploy template for Eazytraining simple-deploy-template" 
   creationTimestamp: null
-  name: devops_openshift-simple-deploy-template
+  name: eazytraining_openshift-simple-service-template
 objects:
   - apiVersion: v1
     kind: Service
     metadata:
       labels:
-        app: app-${APPLICATION_NAME}-${VERSION}
-      name: app-${APPLICATION_NAME}-${VERSION}
+        app: app-${APPLICATION_NAME}
+      name: app-${APPLICATION_NAME}
     spec:
       ports:
-        - name: 8080-tcp
-          port: 8080
-          protocol: TCP
-          targetPort: 8080
+        ports:
+          - name: 8080-tcp
+            port: 8080
+            protocol: TCP
+            targetPort: 8080
+          - name: 8443-tcp
+            port: 8443
+            protocol: TCP
+            targetPort: 8443
       selector:
-        app: app-${APPLICATION_NAME}-${VERSION}
+        app: app-${APPLICATION_NAME}
       sessionAffinity: None
       type: ClusterIP
     status:
@@ -30,5 +35,4 @@ objects:
 parameters:
   - name: APPLICATION_NAME
     required: true
-  - name: VERSION
-    required: true
+    value: "eazytraining-httpd"
