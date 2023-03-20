@@ -4,4 +4,4 @@ COPY ./src/ /var/www/html
 
 USER 1001
 
-CMD [ "httpd -DFOREGROUND" ]
+CMD [ "httpd -D FOREGROUND" ]
