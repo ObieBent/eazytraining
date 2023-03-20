@@ -33,10 +33,10 @@ objects:
           dockerfilePath: Dockerfile
           forcePull: true
           noCache: true
-          # from:
-          #   kind: ImageStreamTag
-          #   name: ${FROM_IMAGE}
-          #   namespace: ${FROM_NAMESPACE}
+          from:
+            kind: ImageStreamTag
+            name: ${FROM_IMAGE}
+            namespace: ${FROM_NAMESPACE}
         type: Docker
       triggers:
         - imageChange:
