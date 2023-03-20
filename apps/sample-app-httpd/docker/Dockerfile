@@ -1,4 +1,4 @@
-FROM quay.io/centos7/httpd-24-centos7:latest
+FROM bitnami/apache:latest
 
 COPY ./src/ /var/www/html
 
