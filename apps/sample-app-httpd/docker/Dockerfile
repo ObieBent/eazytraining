@@ -1,3 +1,3 @@
 FROM bitnami/apache:latest
 
-COPY ./src/ /opt/app-root
+COPY ./src/ /app
