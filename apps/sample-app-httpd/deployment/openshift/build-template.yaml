@@ -64,5 +64,5 @@ parameters:
     required: true
   - name: FROM_IMAGE
     description: Source image 
-    value: "httpd:2.4" 
+    value: "eazy-apache:1.0" 
     required: true
