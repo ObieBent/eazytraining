@@ -1,7 +1,5 @@
-FROM bitnami/apache:latest
+FROM nginx-120:latest
 
-COPY ./src/ /var/www/html
+COPY ./src/ /opt/app-root
 
 USER 1001
-
-CMD httpd -D FOREGROUND
