@@ -85,9 +85,9 @@ objects:
               securityContext:
                 readOnlyRootFilesystem: true
               volumeMounts:
-              - mountPath: opt/bitnami/apache/var/run/
+              - mountPath: /opt/bitnami/apache/var/run/
                 name: pid-dir
-              - mountPath: /etc/httpd/logs/
+              - mountPath: /opt/bitnami/apache/logs/
                 name: log-dir
           dnsPolicy: ClusterFirst
           restartPolicy: Always
