@@ -1,5 +1,5 @@
 FROM bitnami/apache:latest
 
-COPY ./src/ /opt/bitnami/apache/htdocs
+COPY ./src/ /opt/app-root
 
 USER 1001
