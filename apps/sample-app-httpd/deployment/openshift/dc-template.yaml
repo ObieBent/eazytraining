@@ -52,28 +52,18 @@ objects:
               ports: 
                 - containerPort: 8080
                   protocol: TCP
-                - containerPort: 8443
-                  protocol: TCP
               livenessProbe:
-                exec:
-                  command:
-                    - /usr/bin/pgrep
-                    - httpd
-                failureThreshold: 3
-                initialDelaySeconds: 60
-                periodSeconds: 10
-                successThreshold: 1
-                timeoutSeconds: 1
+                httpGet:
+                  path: "/"
+                  port: 8080
+                initialDelaySeconds: 30
+                timeoutSeconds: 3
               readinessProbe:
-                exec:
-                  command:
-                    - /usr/bin/pgrep
-                    - httpd
-                failureThreshold: 3
-                initialDelaySeconds: 10
-                periodSeconds: 10
-                successThreshold: 1
-                timeoutSeconds: 1
+                httpGet:
+                  path: "/"
+                  port: 8080
+                initialDelaySeconds: 3
+                timeoutSeconds: 3
               resources:
                 limits:
                   cpu: 250m
@@ -82,22 +72,6 @@ objects:
                   cpu: 250m
                   memory: 250Mi
               image: ${FROM_IMAGE}
-              securityContext:
-                readOnlyRootFilesystem: true
-              volumeMounts:
-              - mountPath: /opt/bitnami/apache/var/run/
-                name: pid-dir
-              - mountPath: /opt/bitnami/apache/logs/
-                name: log-dir
-          dnsPolicy: ClusterFirst
-          restartPolicy: Always
-          schedulerName: default-scheduler
-          terminationGracePeriodSeconds: 30
-          volumes:
-            - emptyDir: {}
-              name: pid-dir
-            - emptyDir: {}
-              name: log-dir
       test: false
       triggers:
         - type: ConfigChange
@@ -108,7 +82,6 @@ objects:
             from:
               kind: ImageStreamTag
               name: ${FROM_IMAGE}
-              namespace: ${FROM_NAMESPACE}
           type: ImageChange
 parameters:
   - name: FROM_NAMESPACE
