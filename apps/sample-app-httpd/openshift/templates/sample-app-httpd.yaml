@@ -180,6 +180,10 @@ objects:
               name: ${FROM_IMAGE}
           type: ImageChange
 parameters:
+  - name: NAME
+    required: true
+    description: name of the namespace
+    value: eazytraining
   - name: APPLICATION_NAME
     required: true
     value: "eazytraining-httpd"
@@ -213,4 +217,4 @@ parameters:
     required: true
   - name: FROM_IMAGE
     description: Source image 
-    value: "dck_${IMAGE_NAME}:${IMAGE_TAG}"
+    value: "dck_eazytraining-lab-http:1.0"
