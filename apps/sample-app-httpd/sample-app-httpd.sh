@@ -58,5 +58,4 @@ sample_app_url(){
 }
 
 sample_app_deploy_build_config_pipeline 
-sample_app_url 
-
+sample_app_url
