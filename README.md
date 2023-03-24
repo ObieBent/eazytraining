@@ -1,1 +1,1 @@
-# eazytraining
+# eazytraining sample app httpd
