@@ -96,6 +96,9 @@ objects:
       triggers:
         - imageChange:
           type: ImageChange
+        - type: GitHub
+          github: 
+            secret: "${BUILD_SECRET}"
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
@@ -207,6 +210,11 @@ parameters:
     description: Source Repository URL
     value: "https://github.com/ObieBent/eazytraining.git" 
     required: true
+  - name: BUILD_SECRET
+    description: A secret string used to configure the build webhooks.
+    displayName: Webhook Secret for builds
+    required: true
+    value: github-secret-webhook
   - name: FROM_NAMESPACE
     description: Source namespace
     value: "openshift"
