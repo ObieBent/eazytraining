@@ -221,7 +221,7 @@ parameters:
     required: true
   - name: SOURCE_IMAGE
     description: Source image 
-    value: "httpd:2.4-el8" 
+    value: "httpd:2.4" 
     required: true
   - name: FROM_IMAGE
     description: Source image 
