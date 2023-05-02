@@ -26,7 +26,7 @@ err() {
 }
 
 sample_app_validate_tools() {
-  info "validating tools"
+  info "Validating tools"
   echo " "
   oc version  >/dev/null 2>&1 || err 1 "no oc binary found"
   return 0
@@ -34,7 +34,7 @@ sample_app_validate_tools() {
 
 bootstrapping() {
     sample_app_validate_tools
-    info "ensure namespace $NAMESPACE exists"
+    info "Ensure namespace $NAMESPACE exists"
     echo " "
     oc get ns "$NAMESPACE" 2>/dev/null  || {
       oc new-project $NAMESPACE
