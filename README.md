@@ -26,7 +26,7 @@ openshift-gitops-server-78496878bd-cqt8k                     1/1     Running   0
 ```
 
 
-# Pre-requis Day2
+# Day2 prerequisites
 
 Manifests located into day2 folder set up the following features: 
 - Swicthing of control plane workloads on infra nodes
