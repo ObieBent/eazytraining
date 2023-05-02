@@ -53,7 +53,8 @@ sample_app_deploy_build_config_pipeline() {
   local pod_status=`oc -n $NAMESPACE get pods --field-selector=status.phase!=Running --ignore-not-found`
 
   if [[ -z $pod_status ]]; then
-     err "There is something wrong inside your build config pipeline. Please check logs of containers !"
+     log_err "There is something wrong inside your build config pipeline. Please check logs of containers !"
+     exit 1  
   fi
 }
 
