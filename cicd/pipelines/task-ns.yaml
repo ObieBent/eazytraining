@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task 
+metadata: 
+  name: namespace-creation
+spec: 
+  workspaces: 
+  - name: source
+  steps: 
+    - name: apply
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
+      command: ["/bin/bash", "-c"]
+      args: 
+        - |-
+          oc get ns eazytraining 2>/dev/null  || {
+             oc new-project eazytraining
+          }     
