@@ -7,7 +7,7 @@ cd operators/gitops
 kustomize build | oc apply -f -
 ```
 
-The installation of this operator will create implicitly a new namespace `openshift-gitops` where control plane workload would be instantiated. 
+The installation of this operator will create implicitly a new namespace `openshift-gitops` where control plane workloads would be instantiated. 
 It may be necessary to check if pods are running properly. 
 
 
