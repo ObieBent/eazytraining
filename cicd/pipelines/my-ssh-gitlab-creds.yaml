@@ -6,5 +6,5 @@ metadata:
   annotations: 
     tekton.dev/git-0: ${GITLAB_HOST_FQDN}
   type: kubernetes.io/ssh-auth
-  stringData: 
-    ssh-privatekey: ${BASE64_PRIVATE_SSH_KEY}
+data: 
+  ssh-privatekey: ${BASE64_PRIVATE_SSH_KEY}
