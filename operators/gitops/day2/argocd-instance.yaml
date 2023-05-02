@@ -25,8 +25,7 @@ spec:
   dex:
     openShiftOAuth: true
     groups: 
-    - expertise-edf
-    - expertise-i3t-admin
+    - eazytraining-admin
     resources:
       limits:
         cpu: 500m
@@ -65,26 +64,15 @@ spec:
       enabled: false
   rbac:
     policy: |
-      p, role:expertise-edf-admin, applicationsets, *, */*, allow
-      p, role:expertise-edf-admin, projects, *, */*, allow
-      p, role:expertise-edf-admin, certificates, *, */*, allow
-      p, role:expertise-edf-admin, applications, *, */*, allow
-      p, role:expertise-edf-admin, clusters, *, */*, allow
-      p, role:expertise-edf-admin, repositories, *, */*, allow
-      p, role:expertise-edf-admin, logs, get, *, allow
-      p, role:expertise-edf-admin, exec, create, */*, allow
-      p, role:expertise-i3t-admin, applicationsets, *, */*, allow
-      p, role:expertise-i3t-admin, projects, *, */*, allow
-      p, role:expertise-i3t-admin, certificates, *, */*, allow
-      p, role:expertise-i3t-admin, applications, *, */*, allow
-      p, role:expertise-i3t-admin, clusters, *, */*, allow
-      p, role:expertise-i3t-admin, repositories, *, */*, allow
-      p, role:expertise-i3t-admin, logs, get, *, allow
-      p, role:expertise-i3t-admin, exec, create, */*, allow
-      g, system:cluster-admins, role:admin
-      g, cluster-admins, role:admin
-      g, expertise-edf, role:expertise-edf-admin
-      g, expertise-i3t, role:expertise-i3t-admin
+      p, role:eazytraining-admin, applicationsets, *, */*, allow
+      p, role:eazytraining-admin, projects, *, */*, allow
+      p, role:eazytraining-admin, certificates, *, */*, allow
+      p, role:eazytraining-admin, applications, *, */*, allow
+      p, role:eazytraining-admin, clusters, *, */*, allow
+      p, role:eazytraining-admin, repositories, *, */*, allow
+      p, role:eazytraining-admin, logs, get, *, allow
+      p, role:eazytraining-admin, exec, create, */*, allow
+      g, eazytraining-admin, role:eazytraining-admin
     scopes: '[groups]'
   redis:
     resources:
