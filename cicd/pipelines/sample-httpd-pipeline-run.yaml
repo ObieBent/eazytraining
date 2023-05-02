@@ -18,4 +18,4 @@ spec:
             storage: 1Gi
   - name: git-credentials
     secret:
-      secretName: git-credentials
+      secretName: ssh-key

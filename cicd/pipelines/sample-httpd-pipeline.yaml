@@ -2,6 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata: 
   name: sample-httpd-pipeline
+  namespace: ${NAMESPACE}
 spec:
   tasks: 
   - name: fetch-source
@@ -16,6 +17,8 @@ spec:
     workspaces: 
     - name: output 
       workspace: source-dir
+    - name: ssh-directory
+      workspace: git-credentials
   - name: build-and-push-image
     params:
     - name: CONTEXT
@@ -32,4 +35,5 @@ spec:
     - name: source
       workspace: source-dir
   workspaces:
-    - name: source-dir    
+    - name: source-dir
+    - name: git-credentials
