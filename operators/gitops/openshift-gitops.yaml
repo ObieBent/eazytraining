@@ -7,5 +7,5 @@ spec:
   channel:  "gitops-1.8"
   installPlanApproval: "Manual"
   name: openshift-gitops-operator
-  source: redhat-operators
+  source: redhat-operator-index
   sourceNamespace: openshift-marketplace

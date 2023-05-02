@@ -7,5 +7,5 @@ spec:
   channel:  "pipelines-1.8"
   installPlanApproval: "Manual"
   name: openshift-pipelines-operator-rh
-  source: redhat-operators
+  source: redhat-operator-index
   sourceNamespace: openshift-marketplace
