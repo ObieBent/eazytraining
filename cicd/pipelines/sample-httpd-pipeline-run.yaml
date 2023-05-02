@@ -4,7 +4,6 @@ metadata:
   name: sample-httpd-pipeline-run 
   namespace: ${NAMESPACE}
 spec:
-  serviceAccountName: build-bot 
   pipelineRef:
     name: sample-httpd-pipeline
   workspaces:
