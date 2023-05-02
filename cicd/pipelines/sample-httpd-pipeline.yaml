@@ -40,7 +40,7 @@ spec:
       value: "apps/sample-app-httpd/docker"
     - name: IMAGE
       value: >-
-        image-registry.openshift-image-registry.svc:5000/eazytraining/dck_eazytraining-lab-http:1.0
+        image-registry.openshift-image-registry.svc:5000/${NAMESPACE}/dck_eazytraining-lab-http:1.0
     runAfter: 
     - fetch-source
       

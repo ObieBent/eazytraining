@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   name: sample-httpd-pipeline-run 
-  namespace: eazytraining
+  namespace: ${NAMESPACE}
 spec:
   serviceAccountName: build-bot 
   pipelineRef:
