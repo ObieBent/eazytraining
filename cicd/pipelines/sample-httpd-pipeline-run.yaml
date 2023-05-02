@@ -7,3 +7,15 @@ spec:
   serviceAccountName: build-bot 
   pipelineRef:
     name: sample-httpd-pipeline
+  workspaces:
+  - name: source-dir
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+  - name: git-credentials
+    secret:
+      secretName: git-credentials
