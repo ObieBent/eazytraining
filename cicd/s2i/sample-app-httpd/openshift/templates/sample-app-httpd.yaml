@@ -94,9 +94,8 @@ objects:
             namespace: ${FROM_NAMESPACE}
         type: Docker
       triggers:
-        - imageChange:
-          type: ImageChange
-        - gitlab: 
+        type: "GitLab"
+        gitlab: 
             secretReference: 
               name: "gitlab-webhook-secret"
   - apiVersion: apps.openshift.io/v1
