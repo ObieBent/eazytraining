@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: dep-eazytraining-httpd
+  labels: 
+    app: app-eazytraining-httpd
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: app-eazytraining-httpd
+  template: 
+    metadata:
+      labels: 
+        app: app-eazytraining-httpd
+    spec: 
+      containers: 
+      - name: eazytraining-httpd
+        image: image-registry.openshift-image-registry.svc:5000/${NAMESPACE}/dck_eazytraining-lab-http:1.0
+        ports: 
+        - containerPort: 8080
+          protocol: TCP
+        livenessProbe:
+          exec:
+            command:
+            - /usr/bin/pgrep
+            - httpd
+            failureThreshold: 3
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+        readinessProbe:
+          exec:
+            command:
+            - /usr/bin/pgrep
+            - httpd
+            failureThreshold: 3
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 250m
+            memory: 250Mi
+          requests:
+            cpu: 250m
+            memory: 250Mi

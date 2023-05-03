@@ -1,0 +1,34 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: sample-httpd-trigger
+  namespace: ${NAMESPACE}
+spec: 
+  params: 
+  - default: ${REPO_GIT_BRANCH}
+    description: The git revision
+    name: revision
+  - default: '${REPO_GIT_URL}'
+    description: The git repository url
+    name: url
+  resourcetemplates: 
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      generateName: sample-httpd-pipeline-run-
+    spec: 
+      pipelineRef:
+        name: sample-httpd-pipeline
+      serviceAccountName: pipeline 
+      workspaces:
+      - name: source-dir
+        volumeClaimTemplate:
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 1Gi
+      - name: git-credentials
+        secret:
+          secretName: ssh-key

@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sample-app-httpd 
+spec: 
+  destination: 
+    name: ''
+    namespace: ${NAMESPACE}
+    server: 'https://kubernetes.default.svc'
+  source: 
+    path: cicd/gitops/apps/sample-app-httpd
+    repoURL: '${REPO_GIT_URL}'
+    targetRevision: ${REPO_GIT_BRANCH}
+  project: default

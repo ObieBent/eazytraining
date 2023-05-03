@@ -8,8 +8,10 @@ spec:
   - name: fetch-source
     params: 
     - name: url 
+      description: The git repository url
       value: '${REPO_GIT_URL}'
     - name: revision
+      description: The git revision
       value: ${REPO_GIT_BRANCH}
     taskRef: 
       kind: ClusterTask
