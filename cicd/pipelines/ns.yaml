@@ -4,4 +4,5 @@ metadata:
   name: ${NAMESPACE}
   label: 
     app: training
+    argocd.argoproj.io/managed-by: openshift-gitops
 spec: {}
