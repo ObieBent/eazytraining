@@ -82,7 +82,7 @@ objects:
           ref: "${GIT_BRANCH}"
           uri: ${GIT_URL}
         type: Git
-        contextDir: "apps/sample-app-httpd/docker"
+        contextDir: "s2i/sample-app-httpd/docker"
       strategy:
         dockerStrategy:
           dockerfilePath: Dockerfile
@@ -208,7 +208,7 @@ parameters:
     required: true
   - name: GIT_URL
     description: Source Repository URL
-    value: "https://github.com/ObieBent/eazytraining.git" 
+    value: "http://gitlab.eazytraining.lab/admin-boass/eazytraining.git" 
     required: true
   - name: BUILD_SECRET
     description: A secret string used to configure the build webhooks.
