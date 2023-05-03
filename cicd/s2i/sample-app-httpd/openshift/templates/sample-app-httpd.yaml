@@ -82,7 +82,7 @@ objects:
           ref: "${GIT_BRANCH}"
           uri: ${GIT_URL}
         type: Git
-        contextDir: "s2i/sample-app-httpd/docker"
+        contextDir: "cicd/s2i/sample-app-httpd/docker"
       strategy:
         dockerStrategy:
           dockerfilePath: Dockerfile
