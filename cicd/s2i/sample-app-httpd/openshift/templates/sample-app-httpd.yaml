@@ -96,8 +96,8 @@ objects:
       triggers:
         - imageChange:
           type: ImageChange
-        - type: GitHub
-          github: 
+        - type: Gitlab
+          gitlab: 
             secret: "${BUILD_SECRET}"
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
