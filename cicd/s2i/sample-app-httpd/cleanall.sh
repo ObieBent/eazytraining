@@ -38,4 +38,4 @@ sleep 5
 oc -n "$NAMESPACE" delete deploymentconfig.apps.openshift.io/dc-eazytraining-httpd 
 sleep 5
 
-oc delete ns "$NAMESPACE"
+# oc delete ns "$NAMESPACE"
