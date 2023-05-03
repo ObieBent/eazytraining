@@ -3,11 +3,11 @@ kind: Route
 metadata:
   labels:
     app: app-eazytraining
-  name: route-eazytraining
+  name: route-eazytraining-httpd
 spec:
   port:
     targetPort: 8080
   to:
     kind: Service
-    name: svc-eazytraining
+    name: svc-eazytraining-httpd
     weight: 100
