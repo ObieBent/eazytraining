@@ -96,9 +96,9 @@ objects:
       triggers:
         - imageChange:
           type: ImageChange
-        - type: "GitLab" 
-          gitlab: 
-            secret: "gitlab-webhook-secret"
+        - gitlab: 
+            secretReference: 
+              name: "gitlab-webhook-secret"
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
