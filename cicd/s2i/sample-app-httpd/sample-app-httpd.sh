@@ -15,7 +15,7 @@ log_err() {
 }
 
 info() {
-    _log "\nINFO" "$@"
+    _log "INFO" "$@"
 }
 
 err() {
