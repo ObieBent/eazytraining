@@ -5,11 +5,13 @@ metadata:
   namespace: openshift-gitops
 spec: 
   destination: 
-    name: ''
-    namespace: ${NAMESPACE}
+    namespace: art-eazytraining
     server: 'https://kubernetes.default.svc'
-  source: 
-    path: cicd/gitops/apps/sample-app-httpd
-    repoURL: '${REPO_GIT_URL}'
-    targetRevision: ${REPO_GIT_BRANCH}
   project: default
+  source: 
+    path: config/overlays/dev
+    repoURL: https://github.com/ObieBent/eazytraining-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true

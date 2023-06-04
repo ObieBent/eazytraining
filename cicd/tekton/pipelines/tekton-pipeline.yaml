@@ -53,6 +53,8 @@ spec:
       workspaces:
         - name: output
           workspace: shared-workspace
+        - name: ssh-directory
+          workspace: git-credentials
     - name: build-and-push-image
       params:
         - name: CONTEXT
@@ -100,5 +102,5 @@ spec:
   workspaces:
     - name: shared-workspace
       optional: false
-    - name: maven-settings
+    - name: git-credentials
       optional: false

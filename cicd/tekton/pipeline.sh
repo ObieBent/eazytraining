@@ -35,7 +35,7 @@ command.help() {
   
   Examples:
       pipeline.sh init  # installs and creates all tasks, pvc and secrets
-      pipeline.sh start -t art-tekton
+      pipeline.sh start -t art-eazytraining
       pipeline.sh stage -r 1.2.3 
       pipeline.sh logs
   
@@ -164,10 +164,10 @@ spec:
   workspaces:
     - name: shared-workspace
       persistentVolumeClaim:
-        claimName: builder-pvc 
-    - configMap:
-        name: maven-settings
-      name: maven-settings
+        claimName: builder-pvc
+    - name: git-credentials
+      secret:
+        secretName: git-ssh-key
   pipelineRef:
     name: $PIPELINE
   serviceAccountName: pipeline-bot
@@ -190,7 +190,10 @@ spec:
   workspaces:
     - name: shared-workspace
       persistentVolumeClaim:
-        claimName: builder-pvc 
+        claimName: builder-pvc
+    - name: git-credentials
+      secret:
+        secretName: git-ssh-key
   pipelineRef:
     name: gitops-stage-release
   serviceAccountName: pipeline-bot
