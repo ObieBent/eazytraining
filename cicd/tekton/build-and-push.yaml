@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task 
+metadata:
+  name: buildah 
+  labels:
+    app.kubernetes.io/version: "0.1"
+    operator.tekton.dev/operand-name: openshift-pipelines-addons
+    operator.tekton.dev/provider-type: redhat
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.12.1"
+    tekton.dev/tags: image-build
+spec:
+  description: |-
+    Buildah task builds source into a container image and then pushes it to a container registry.
+    Buildah Task builds source into a container image using Project Atomic's Buildah build tool.It uses Buildah's support for building from Dockerfiles, using its buildah bud command.This command executes the directives in the Dockerfile to assemble a container image, then pushes that image to a container registry.
+  workspace: 
+    - name: source
+      description: The workspace for building the image 
+  params:
+  - description: Reference of the image buildah will produce.
+    name: IMAGE
+    type: string
+  - default: registry.redhat.io/rhel8/buildah@sha256:0a86ecbdfbe86e9d225b7fe4b090a0dd6d323f8afdfdf2bd933ff223ddb53320
+    description: The location of the buildah builder image.
+    name: BUILDER_IMAGE
+    type: string
+
+  

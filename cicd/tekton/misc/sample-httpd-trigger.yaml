@@ -28,7 +28,7 @@ spec:
             - ReadWriteOnce
             resources:
               requests:
-                storage: 1Gi
+                storage: 10Gi
       - name: git-credentials
         secret:
-          secretName: ssh-key
+          secretName: git-ssh-key
