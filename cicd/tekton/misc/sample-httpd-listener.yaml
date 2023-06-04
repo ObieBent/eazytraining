@@ -2,7 +2,7 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: sample-httpd-listener
-  namespace: ${NAMESPACE}
+  namespace: eazytraining
 spec: 
   serviceAccountName: pipeline 
   triggers: 
