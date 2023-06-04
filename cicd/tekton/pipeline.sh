@@ -143,7 +143,7 @@ command_logs() {
     tkn pr logs -f -L
 }
 
-command.start() {
+command_start() {
   cat > /tmp/pipelinerun.yaml <<-EOF
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
@@ -179,7 +179,7 @@ EOF
 main() {
   local fn="command.$COMMAND"
   valid_command "$fn" || {
-    command.help
+    command_help
     err "invalid command '$COMMAND'"
   }
 
