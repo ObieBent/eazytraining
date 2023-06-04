@@ -2,14 +2,12 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: sample-httpd-trigger
-  namespace: ${NAMESPACE}
+  namespace: eazytraining
 spec: 
   params: 
-  - default: ${REPO_GIT_BRANCH}
-    description: The git revision
+  - default: main
     name: revision
-  - default: '${REPO_GIT_URL}'
-    description: The git repository url
+  - default: 'http://gitlab.eazytraining.lab/boass/eazytraining.git'
     name: url
   resourcetemplates: 
   - apiVersion: tekton.dev/v1beta1
