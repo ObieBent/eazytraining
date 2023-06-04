@@ -139,7 +139,7 @@ command_init() {
 }
 
 
-command.logs() {
+command_logs() {
     tkn pr logs -f -L
 }
 
