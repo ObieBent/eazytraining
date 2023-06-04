@@ -8,7 +8,7 @@ declare COMMAND="help"
 GIT_URL=http://gitlab.eazytraining.lab/boass/eazytraining.git
 GIT_REVISION=main
 PIPELINE=gitops-dev-pipeline
-CONTEXT_DIR='gitops/tekton'
+CONTEXT_DIR=the-source
 IMAGE_NAME=image-registry.openshift-image-registry.svc:5000/eazytraining/dck_eazytraining-lab-http-simple-wow
 TARGET_NAMESPACE=eazytraining
 
