@@ -176,32 +176,6 @@ EOF
     oc apply -f /tmp/pipelinerun.yaml
 }
 
-
-command.stage() {
-  cat > /tmp/pipelinerun.yaml <<-EOF
-apiVersion: tekton.dev/v1beta1
-kind: PipelineRun
-metadata:
-  name: gitops-stage-release-run-$(date "+%Y%m%d-%H%M%S")
-spec:
-  params:
-    - name: release-name
-      value: $GIT_REVISION
-  workspaces:
-    - name: shared-workspace
-      persistentVolumeClaim:
-        claimName: builder-pvc
-    - name: git-credentials
-      secret:
-        secretName: git-ssh-key
-  pipelineRef:
-    name: gitops-stage-release
-  serviceAccountName: pipeline-bot
-EOF
-
-    oc apply -f /tmp/pipelinerun.yaml
-}
-
 main() {
   local fn="command.$COMMAND"
   valid_command "$fn" || {

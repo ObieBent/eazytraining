@@ -16,17 +16,12 @@ spec:
       generateName: sample-httpd-pipeline-run-
     spec: 
       pipelineRef:
-        name: sample-httpd-pipeline
-      serviceAccountName: pipeline 
+        name: gitops-dev-pipeline
+      serviceAccountName: pipeline-bot 
       workspaces:
-      - name: source-dir
-        volumeClaimTemplate:
-          spec:
-            accessModes:
-            - ReadWriteOnce
-            resources:
-              requests:
-                storage: 10Gi
+      - name: shared-workspace
+        persistentVolumeClaim:
+           claimName: builder-pvc
       - name: git-credentials
         secret:
           secretName: git-ssh-key
