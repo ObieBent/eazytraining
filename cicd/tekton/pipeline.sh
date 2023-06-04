@@ -26,7 +26,7 @@ err() {
   exit 1
 }
 
-command.help() {
+command_help() {
   cat <<-EOF
   Starts a new pipeline in current kubernetes context
 
@@ -56,7 +56,7 @@ command.help() {
 EOF
 }
 
-command.test() {
+command_test() {
   cat > /tmp/tr.yaml <<-EOF
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
@@ -120,7 +120,7 @@ while (( "$#" )); do
 done
 
 
-command.init() {
+command_init() {
   # This script imports the necessary files into the current project 
   
   oc apply -f infra/ns.yaml
