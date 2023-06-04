@@ -128,12 +128,12 @@ command.init() {
   oc apply -f infra/sa.yaml
   oc apply -f infra/route-elistener.yaml
 
-  oc apply -f tasks/kustomize-task.yaml
-  oc apply -f tasks/extract-digest-task.yaml
-  oc apply -f tasks/extract-digest-from-kustomize-task.yaml
+  oc apply -f tkn-tasks/kustomize-task.yaml
+  oc apply -f tkn-tasks/extract-digest-task.yaml
+  oc apply -f tkn-tasks/extract-digest-from-kustomize-task.yaml
   
-  oc apply -f tasks/git-update-deployment.yaml
-  oc apply -f tasks/bash-task.yaml
+  oc apply -f tkn-tasks/git-update-deployment.yaml
+  oc apply -f tkn-tasks/bash-task.yaml
 
   oc apply -f pipelines/tekton-pipeline.yaml
 }
